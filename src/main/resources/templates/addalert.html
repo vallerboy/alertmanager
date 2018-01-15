@@ -12,7 +12,7 @@
         <form action="/addalert" th:object="${alertForm}" method="post">
             <textarea placeholder="Wpisz tekt" th:field="*{alert}"></textarea>
             <br/>
-            Czy to ostrzeżenie? <input type="checkbox" value="Czy ostrzeżenie?" th:checked="*{isWarning}" />
+            Czy to ostrzeżenie? <input type="checkbox" value="Czy ostrzeżenie?" th:name="*{isWarning}" />
             <br/>
             <input type="submit" value="Wyślij!"/>
         </form>

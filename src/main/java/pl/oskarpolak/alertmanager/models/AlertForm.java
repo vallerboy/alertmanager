@@ -12,11 +12,11 @@ public class AlertForm {
         this.alert = alert;
     }
 
-    public boolean isWarning() {
+    public boolean getIsWarning() {
         return isWarning;
     }
 
-    public void setWarning(boolean warning) {
+    public void setIsWarning(boolean warning) {
         isWarning = warning;
     }
 }
