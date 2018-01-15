@@ -9,10 +9,12 @@
 </head>
 <body>
     <div style="text-align: center;">
-        <form action="/addalert" th:object="${alertForm}" method="post">
+        <h1 th:if="${info} != null" th:text="${info}"></h1>
+
+        <form th:if="${info} == null" action="/addalert" th:object="${alertForm}" method="post">
             <textarea placeholder="Wpisz tekt" th:field="*{alert}"></textarea>
             <br/>
-            Czy to ostrzeżenie? <input type="checkbox" value="Czy ostrzeżenie?" th:name="*{isWarning}" />
+            Czy to ostrzeżenie? <input type="checkbox"  th:field="*{isWarning}" th:name="*{isWarning}" />
             <br/>
             <input type="submit" value="Wyślij!"/>
         </form>

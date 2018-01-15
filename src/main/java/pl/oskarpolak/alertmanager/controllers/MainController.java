@@ -2,9 +2,7 @@ package pl.oskarpolak.alertmanager.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.oskarpolak.alertmanager.models.AlertForm;
 
 @Controller
@@ -21,10 +19,13 @@ public class MainController {
         return "addalert";
     }
 
+
     @PostMapping("/addalert")
-    public String addAlertPost(@ModelAttribute("alertForm") AlertForm alertForm){
-        System.out.println("Treść z formularza: " + alertForm.getAlert());
-        System.out.println("Czy jest to ostrzeżenie?: " + alertForm.getIsWarning());
+    public String addAlertPost(@ModelAttribute AlertForm alert, Model model){
+        System.out.println("Treść z formularza: " + alert.getAlert());
+        System.out.println("Czy jest to ostrzeżenie?: " + alert.getIsWarning());
+
+        model.addAttribute("info", "Poprawnie dodałeś/aś nowe ostrzeżenie!");
         return "addalert";
     }
 

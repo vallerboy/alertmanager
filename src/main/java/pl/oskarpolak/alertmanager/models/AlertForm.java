@@ -2,7 +2,11 @@ package pl.oskarpolak.alertmanager.models;
 
 public class AlertForm {
     private String alert;
-    private boolean isWarning;
+    private Boolean isWarning;
+
+    public AlertForm() {
+        isWarning = true;
+    }
 
     public String getAlert() {
         return alert;
@@ -12,11 +16,11 @@ public class AlertForm {
         this.alert = alert;
     }
 
-    public boolean getIsWarning() {
+    public Boolean getIsWarning() {
         return isWarning;
     }
 
-    public void setIsWarning(boolean warning) {
+    public void setIsWarning(Boolean warning) {
         isWarning = warning;
     }
 }
