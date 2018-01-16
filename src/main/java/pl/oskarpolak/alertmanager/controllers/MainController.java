@@ -1,15 +1,24 @@
 package pl.oskarpolak.alertmanager.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.oskarpolak.alertmanager.models.AlertForm;
+import pl.oskarpolak.alertmanager.models.services.AlertListService;
 
 @Controller
 public class MainController {
 
+    @Autowired
+    AlertListService alertListService;
+
+
+
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("alerts", alertListService.getAlertFormList());
+
         return "index";
     }
 
@@ -22,12 +31,13 @@ public class MainController {
 
     @PostMapping("/addalert")
     public String addAlertPost(@ModelAttribute AlertForm alert, Model model){
-        System.out.println("Treść z formularza: " + alert.getAlert());
-        System.out.println("Czy jest to ostrzeżenie?: " + alert.getIsWarning());
-
+        alertListService.addAlertToList(alert);
+        System.out.println("Wielkość: " + alertListService.getAlertFormList().size());
         model.addAttribute("info", "Poprawnie dodałeś/aś nowe ostrzeżenie!");
         return "addalert";
     }
+
+
 
 
 }
