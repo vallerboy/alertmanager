@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Komunikaty</title>
@@ -8,9 +8,11 @@
 </head>
 <body>
     <div style="text-align: center;">
-        <div class="alert alert-success">
-             <h1><strong>Success!</strong> Indicates a successful or positive action.</h1>
+      <th:block th:each="alert : ${alerts}">
+        <div class="alert" th:classappend="${alert.isWarning} ? alert-danger : alert-success">
+            <h1 th:text="${alert.alert}"></h1>
          </div>
+      </th:block>
     </div>
 </body>
 </html>
