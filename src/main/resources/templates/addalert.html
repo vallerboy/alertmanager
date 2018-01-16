@@ -12,6 +12,8 @@
         <h1 th:if="${info} != null" th:text="${info}"></h1>
 
         <form th:if="${info} == null" action="/addalert" th:object="${alertForm}" method="post">
+            <span th:if="${#fields.hasErrors('alert')}" th:errors="*{alert}"></span>
+            <br/>
             <textarea placeholder="Wpisz tekt" th:field="*{alert}"></textarea>
             <br/>
             Czy to ostrzeżenie? <input type="checkbox"  th:field="*{isWarning}" th:name="*{isWarning}" />

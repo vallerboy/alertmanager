@@ -1,5 +1,8 @@
 package pl.oskarpolak.alertmanager.models.services;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import pl.oskarpolak.alertmanager.models.AlertForm;
 
@@ -7,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class AlertListService {
     private List<AlertForm> alertFormList;
 
